@@ -5,6 +5,7 @@
     "module": "esnext",
     "useDefineForClassFields": true,
     "resolveJsonModule": true,
+    "strict": true,
     // from svelte config
     "moduleResolution": "node",
     "importsNotUsedAsValues": "error",
