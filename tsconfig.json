@@ -1,8 +1,12 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "target": "esnext",
     "module": "esnext",
+    "types": ["svelte"],
     "useDefineForClassFields": true,
     "resolveJsonModule": true,
     "strict": true,

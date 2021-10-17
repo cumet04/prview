@@ -1,8 +1,7 @@
+const path = require("path");
+
 module.exports = {
-  stories: [
-    "../src/**/*.stories.mdx",
-    "../src/**/*.stories.@(js|jsx|ts|tsx|svelte)",
-  ],
+  stories: ["../src/**/*.stories.@(svelte|mdx)"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
@@ -11,10 +10,13 @@ module.exports = {
   core: {
     builder: "storybook-builder-vite",
   },
-  async viteFinal(config, { configType}){
+  async viteFinal(config, { configType }) {
+    const original = (await import("../vite.config.mjs")).default;
+    config.resolve = original.resolve;
+
     // refs https://issueexplorer.com/issue/eirslett/storybook-builder-vite/90
     config.server.force = false;
-    return config
+    return config;
   },
   svelteOptions: {
     preprocess: import("../svelte.config.mjs").preprocess,
