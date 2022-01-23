@@ -1,9 +1,18 @@
 <script lang="ts">
+  import Review from "@/components/Review.svelte";
+
   export let number: number;
   export let title: string;
   export let branch: string;
   export let iconUrl: string;
   export let status: "open" | "closed" | "merged";
+
+  type reviewStatus = "approve" | "comment" | "request-change" | "pending";
+  export let reviews: {
+    username: string;
+    iconUrl: string;
+    status: reviewStatus;
+  }[] = [];
 </script>
 
 <div class={`item ${status}`}>
@@ -23,7 +32,19 @@
       </div>
     </div>
 
-    <div class="sub" />
+    <div class="sub">
+      <ul class="reviews">
+        {#each reviews as review}
+          <li class="review">
+            <Review
+              username={review.username}
+              iconUrl={review.iconUrl}
+              status={review.status}
+            />
+          </li>
+        {/each}
+      </ul>
+    </div>
   </div>
 </div>
 
@@ -57,13 +78,13 @@
   .content {
     flex-grow: 1;
     display: flex;
+    border-bottom: solid 1px #e5e5e5;
   }
 
   .info {
     flex-grow: 1;
     height: 100%;
     padding-top: 10px;
-    border-bottom: solid 1px #e5e5e5;
 
     & > .title > * {
       display: inline;
@@ -85,6 +106,13 @@
     }
   }
 
-  .sub {
+  .reviews {
+    display: flex;
+
+    & .review {
+      padding-top: 10px;
+      list-style: none;
+      margin-left: 4px;
+    }
   }
 </style>
