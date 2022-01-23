@@ -35,13 +35,13 @@
     border-left: solid 4px;
 
     &.open {
-      border-left-color: #1a7f37;
+      border-left-color: var(--color-success-fg);
     }
     &.closed {
-      border-left-color: #cf222e;
+      border-left-color: var(-color-danger-fg);
     }
     &.merged {
-      border-left-color: #8250df;
+      border-left-color: var(--color-done-fg);
     }
   }
 

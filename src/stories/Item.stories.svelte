@@ -15,7 +15,10 @@
 />
 
 <Template let:args>
-  <Item {...args} />
+  <!-- TODO: globalな感じにする -->
+  <div class="_color-theme-root-light">
+    <Item {...args} />
+  </div>
 </Template>
 
 <Story
