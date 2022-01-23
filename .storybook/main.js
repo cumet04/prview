@@ -1,5 +1,3 @@
-const path = require("path");
-
 module.exports = {
   stories: ["../src/**/*.stories.@(svelte|mdx)"],
   addons: [
@@ -19,6 +17,13 @@ module.exports = {
     return config;
   },
   svelteOptions: {
-    preprocess: import("../svelte.config.mjs").preprocess,
+    // MEMO: mjs/cjsの壁を越えられないため、svelte.config.mjsと共通にできず同じ設定をコピペしている
+    preprocess: require("svelte-preprocess")({
+      sourceMap: true,
+      typescript: true,
+      postcss: {
+        plugins: [require("postcss-nesting")],
+      },
+    }),
   },
 };
