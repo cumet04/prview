@@ -1,7 +1,6 @@
 <script lang="ts">
-  export let iconUrl: string;
-  export let username: string;
-  export let status: "approve" | "comment" | "request-change" | "pending";
+  export let review: Review;
+  const { iconUrl, username, status } = review;
 
   const iconClass = {
     approve: "check",

@@ -1,18 +1,8 @@
 <script lang="ts">
-  import Review from "@/components/Review.svelte";
+  import ReviewBadge from "@/components/ReviewBadge.svelte";
 
-  export let number: number;
-  export let title: string;
-  export let branch: string;
-  export let iconUrl: string;
-  export let status: "open" | "closed" | "merged";
-
-  type reviewStatus = "approve" | "comment" | "request-change" | "pending";
-  export let reviews: {
-    username: string;
-    iconUrl: string;
-    status: reviewStatus;
-  }[] = [];
+  export let pullRequest: PullRequest;
+  const { number, title, branch, iconUrl, status, reviews } = pullRequest;
 </script>
 
 <div class={`item ${status}`}>
@@ -34,13 +24,9 @@
 
     <div class="sub">
       <ul class="reviews">
-        {#each reviews as review}
+        {#each reviews || [] as review}
           <li class="review">
-            <Review
-              username={review.username}
-              iconUrl={review.iconUrl}
-              status={review.status}
-            />
+            <ReviewBadge {review} />
           </li>
         {/each}
       </ul>

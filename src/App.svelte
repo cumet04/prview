@@ -1,15 +1,13 @@
 <script lang="ts">
   import Item from "@/components/Item.svelte";
-</script>
 
-<main class="_color-theme-root-light">
-  <Item
-    number={26}
-    status="open"
-    title="Add a option to expose daemon's TCP port"
-    branch="cumet04:binding_option"
-    iconUrl="https://github.com/identicons/cumet04.png"
-    reviews={[
+  const pullRequest: PullRequest = {
+    number: 26,
+    status: "open",
+    title: "Add a option to expose daemon's TCP port",
+    branch: "cumet04:binding_option",
+    iconUrl: "https://github.com/identicons/cumet04.png",
+    reviews: [
       {
         status: "pending",
         username: "sveltejs",
@@ -30,8 +28,12 @@
         username: "cumet04",
         iconUrl: "https://github.com/identicons/cumet04.png",
       },
-    ]}
-  />
+    ],
+  };
+</script>
+
+<main class="_color-theme-root-light">
+  <Item {pullRequest} />
 </main>
 
 <style>
