@@ -47,7 +47,7 @@
     }
 
     &.pending {
-      color: yellowgreen; /* TODO: 真面目に色決める */
+      color: var(--color-attention-emphasis);
     }
     &.approve {
       color: var(--color-success-fg);
