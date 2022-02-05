@@ -12,3 +12,9 @@ declare type PullRequest = {
   status: "open" | "closed" | "merged";
   reviews?: Review[];
 };
+
+declare type Repository = {
+  org: string;
+  name: string;
+  pullRequests?: PullRequest[];
+};
