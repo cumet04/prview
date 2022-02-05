@@ -1,0 +1,31 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime", // refs https://github.com/yannickcr/eslint-plugin-react/blob/v7.28.0/docs/rules/react-in-jsx-scope.md
+    "plugin:react-hooks/recommended",
+    "prettier"
+  ],
+  "settings": {
+    "import/resolver": {
+      "typescript": { "project": "." }
+    },
+    "react": {
+      // "Warning: React version not specified in eslint-plugin-react settings."
+      // refs https://github.com/yannickcr/eslint-plugin-react#configuration
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "import/order": [
+      "warn",
+      { "alphabetize": { "order": "asc", "caseInsensitive": true } }
+    ]
+  }
+}
