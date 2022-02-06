@@ -1,7 +1,8 @@
 const path = require("path");
+const { merge } = require("webpack-merge");
 
-module.exports = {
-  mode: "development", // TODO:
+const base = {
+  mode: "production",
   entry: "./src/main.tsx",
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -21,3 +22,13 @@ module.exports = {
     ],
   },
 };
+
+const development = {
+  mode: "development",
+  devServer: {
+    static: "./dist",
+  },
+};
+
+module.exports = (env, argv) =>
+  argv.mode === "development" ? merge(base, development) : base;

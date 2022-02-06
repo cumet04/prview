@@ -1,3 +1,3 @@
 export const App: React.VFC = () => {
-  return <div />;
+  return <div>hoge</div>;
 };
